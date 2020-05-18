@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://StdChen.github.io</id>
     <title>StdChen Website</title>
-    <updated>2020-05-18T11:21:45.336Z</updated>
+    <updated>2020-05-18T15:17:05.254Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://StdChen.github.io"/>
     <link rel="self" href="https://StdChen.github.io/atom.xml"/>
@@ -12,22 +12,22 @@
     <rights>All rights reserved 2020, StdChen Website</rights>
     <entry>
         <title type="html"><![CDATA[Day2 语言元素]]></title>
-        <id>https://StdChen.github.io/post/yu-yan-yuan-su/</id>
-        <link href="https://StdChen.github.io/post/yu-yan-yuan-su/">
+        <id>https://StdChen.github.io/post/Day2 语言元素/</id>
+        <link href="https://StdChen.github.io/post/Day2 语言元素/">
         </link>
         <updated>2020-05-18T08:25:15.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[Markdown基本语法学习笔记]]></title>
-        <id>https://StdChen.github.io/post/markdown-ji-ben-yu-fa-xue-xi-bi-ji/</id>
-        <link href="https://StdChen.github.io/post/markdown-ji-ben-yu-fa-xue-xi-bi-ji/">
+        <id>https://StdChen.github.io/post/Markdown基本语法学习笔记/</id>
+        <link href="https://StdChen.github.io/post/Markdown基本语法学习笔记/">
         </link>
         <updated>2020-05-18T07:52:35.000Z</updated>
     </entry>
     <entry>
         <title type="html"><![CDATA[Day1 初识Python]]></title>
-        <id>https://StdChen.github.io/post/chu-shi-python/</id>
-        <link href="https://StdChen.github.io/post/chu-shi-python/">
+        <id>https://StdChen.github.io/post/Day1 初识Python/</id>
+        <link href="https://StdChen.github.io/post/Day1 初识Python/">
         </link>
         <updated>2020-05-17T12:22:47.000Z</updated>
     </entry>
