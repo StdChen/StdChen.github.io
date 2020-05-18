@@ -1,0 +1,266 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Day1 初识Python | StdChen Website</title>
+<link rel="shortcut icon" href="https://StdChen.github.io/favicon.ico?v=1589790481622">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://StdChen.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="Day1 初识Python | StdChen Website - Atom Feed" href="https://StdChen.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="1 环境搭建
+推荐使用Anaconda与PyCharm作为Python解释器环境和IDE。Anaconda是一个集成包，集成了数据分析等几乎所有的常用安装包，如numpy，scipy，matplotlib等。不建议使用官方原始Python自..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://StdChen.github.io">
+  <img class="avatar" src="https://StdChen.github.io/images/avatar.png?v=1589790481622" alt="">
+  </a>
+  <h1 class="site-title">
+    StdChen Website
+  </h1>
+  <p class="site-description">
+    This is my personal website.
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/StdChen" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+        <a href="https://weibo.com/u/3821323866" target="_blank">
+          <i class="ri-weibo-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              Day1 初识Python
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-05-17
+              </span>
+              <span>
+                5 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h2 id="1-环境搭建">1 环境搭建</h2>
+<p>推荐使用Anaconda与PyCharm作为Python解释器环境和IDE。Anaconda是一个集成包，集成了数据分析等几乎所有的常用安装包，如<code>numpy</code>，<code>scipy</code>，<code>matplotlib</code>等。不建议使用官方原始Python自己一个一个安装所有的包。搭建完成后，以Anconda下的Python作为默认解释器，PyCharm作为开发环境，相当于编辑器。下面介绍windows环境下Python环境的搭建。</p>
+<ul>
+<li>从官网下载<a href="https://www.anaconda.com/">Anaconda</a>与<a href="https://www.jetbrains.com/pycharm/">PyCharm-community</a>，由于Anaconda官网下载较慢，可以直接从<a href="https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/">清华大学镜像站</a>下载。</li>
+<li>安装Anaconda，路径中不能包含空格。</li>
+<li>安装PyCharm，安装选项中选择创建桌面快捷方式即可，其余选项均默认。安装完成后打开进行PyCharm的配置，直接选择下一步。然后选择Creat New Progect，Location选择自己的Python test文件夹（例如，E:\TEST\Python test），对于interperter选项，PyCharm会默认识别计算机已安装的解释器。</li>
+<li>Windows下设置PyCharm在Anaconda的编译环境。打开PyCharm，点击File-&gt;settings-&gt;Project: Python test，选择Project Interpreter，点击右侧设置按钮，选择Add，然后选择Conda Environment，在Exising enviornment中浏览文件，根据Anaconda的安装路径（例如，D:\ProgramData\Anaconda3\Tools\python.exe）找到Python编译环境，选择Apply即可。至此，Python环境搭建完成。</li>
+</ul>
+<h2 id="2-python代码中的注释">2 Python代码中的注释</h2>
+<ul>
+<li>单行注释：以<code>#</code>和空格开头，用于注释单行代码。</li>
+<li>多行注释：以<code>&quot;&quot;&quot;</code>或<code>'''</code>开头，以<code>&quot;&quot;&quot;</code>或<code>'''</code>结尾。</li>
+</ul>
+<pre><code class="language-python">'''
+This is my first python program - Hello, world!
+Version: 0.1
+Author: StdChen
+'''
+print('Hello, wordl!')
+# print(&quot;你好，世界！&quot;)
+</code></pre>
+<h2 id="3-练习">3 练习</h2>
+<p>在Python交互环境中输入代码如下代码，可以看到Tim Peter撰写的<code>The Zen of Python</code>。</p>
+<pre><code class="language-python">import this
+</code></pre>
+<p>运行结果：</p>
+<pre><code>The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!
+</code></pre>
+<p>翻译与解释：</p>
+<pre><code>Python之禅 by Tim Peters
+
+优美胜于丑陋（Python 以编写优美的代码为目标）
+明了胜于晦涩（优美的代码应当是明了的，命名规范，风格相似）
+简洁胜于复杂（优美的代码应当是简洁的，不要有复杂的内部实现）
+复杂胜于凌乱（如果复杂不可避免，那代码间也不能有难懂的关系，要保持接口简洁）
+扁平胜于嵌套（优美的代码应当是扁平的，不能有太多的嵌套）
+间隔胜于紧凑（优美的代码有适当的间隔，不要奢望一行代码解决问题）
+可读性很重要（优美的代码是可读的）
+即便假借特例的实用性之名，也不可违背这些规则（这些规则至高无上）
+不要包容所有错误，除非你确定需要这样做（精准地捕获异常，不写 except:pass 风格的代码）
+当存在多种可能，不要尝试去猜测
+而是尽量找一种，最好是唯一一种明显的解决方案（如果不确定，就用穷举法）
+虽然这并不容易，因为你不是 Python 之父（这里的 Dutch 是指 Guido ）
+做也许好过不做，但不假思索就动手还不如不做（动手之前要细思量）
+如果你无法向人描述你的方案，那肯定不是一个好方案；反之亦然（方案测评标准）
+命名空间是一种绝妙的理念，我们应当多加利用（倡导与号召）
+</code></pre>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#1-%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA">1 环境搭建</a></li>
+<li><a href="#2-python%E4%BB%A3%E7%A0%81%E4%B8%AD%E7%9A%84%E6%B3%A8%E9%87%8A">2 Python代码中的注释</a></li>
+<li><a href="#3-%E7%BB%83%E4%B9%A0">3 练习</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '544154f7e731791ebda6',
+    clientSecret: '3709408718fa27ce5f3d5fe0f2fca57ccf4d107a',
+    repo: 'StdChen.github.io',
+    owner: 'StdChen',
+    admin: ['StdChen'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  ©2020 by StdChen
+  <a class="rss" href="https://StdChen.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://StdChen.github.io</id>
     <title>StdChen Website</title>
-    <updated>2020-05-18T08:15:40.458Z</updated>
+    <updated>2020-05-18T08:28:08.469Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://StdChen.github.io"/>
     <link rel="self" href="https://StdChen.github.io/atom.xml"/>
@@ -10,6 +10,206 @@
     <logo>https://StdChen.github.io/images/avatar.png</logo>
     <icon>https://StdChen.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, StdChen Website</rights>
+    <entry>
+        <title type="html"><![CDATA[Day2 语言元素]]></title>
+        <id>https://StdChen.github.io/post/yu-yan-yuan-su/</id>
+        <link href="https://StdChen.github.io/post/yu-yan-yuan-su/">
+        </link>
+        <updated>2020-05-18T08:25:15.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="1-数据类型">1 数据类型</h2>
+<p>Python中常见的数据类型主要包括：整型、浮点型、字符串型、布尔型和复数型。可以使用Python中的内置函数对数据类型进行转换。</p>
+<ul>
+<li>整型：Python 3中的整数只有<code>int</code>类型，Python可以处理任意大小的整数，且支持二进制（如<code>0b100</code>，换算成十进制是4）、八进制（如<code>0o100</code>，换算成十进制是64）、十进制（<code>100</code>）和十六进制（<code>0x100</code>，换算成十进制是256）的表示法。</li>
+<li>浮点型：浮点数也就是小数，浮点数除了数学写法（如<code>123.456</code>）外，还支持科学计数法（如<code>1.23456e2</code>）。</li>
+<li>字符串型：字符串是以单引号或双引号括起来的任意文本，比如<code>'hello'</code>和<code>&quot;hello&quot;</code>，字符串还有原始字符串表示法、字节字符串表示法、Unicode字符串表示法，而且可以书写成多行的形式（用三个单引号或三个双引号开头，三个单引号或三个双引号结尾，即Python中的多行注释）。</li>
+<li>布尔型：布尔值只有<code>True</code>和<code>False</code>两种值，在Python中可以直接用<code>True</code>、<code>False</code>表示布尔值（首字母必须大写），也可以通过布尔运算计算出来，例如<code>3 &lt; 5</code>会产生布尔值<code>True</code>，而<code>2 == 1</code>会产生布尔值<code>False</code>。</li>
+<li>复数型：形如<code>3+5j</code>，跟数学上的复数表示一样，唯一不同的是虚部的<code>i</code>换成了<code>j</code>。</li>
+</ul>
+<h2 id="2-变量">2 变量</h2>
+<h3 id="21-变量的命名">2.1 变量的命名</h3>
+<p>在Python中，变量命名需要遵循以下必须遵守硬性规则和强烈建议遵守的非硬性规则。</p>
+<p>(1) 硬性规则：</p>
+<ul>
+<li>变量名由字母（广义的Unicode字符，不包括特殊字符）、数字和下划线构成，且不能以数字开头。</li>
+</ul>
+<ul>
+<li>大小写敏感（大写的<code>a</code>和小写的<code>A</code>是两个不同的变量）。</li>
+<li>不得与关键字（有特殊含义的单词，后面会讲到）和系统保留字（如函数、模块等的名字）冲突。</li>
+</ul>
+<p>(2) PEP 8要求：</p>
+<ul>
+<li>用小写字母拼写，多个单词用下划线连接。</li>
+<li>受保护的实例属性以单个下划线开头。</li>
+<li>私有的实例属性以两个下划线开头。</li>
+</ul>
+<h3 id="22-变量的使用">2.2 变量的使用</h3>
+<p>(1) Python中简单的加减乘除运算。</p>
+<pre><code class="language-python">&quot;&quot;&quot;
+使用变量保存数据并进行加减乘除运算
+Version: 0.1
+Author: StdChen
+&quot;&quot;&quot;
+a = 321
+b = 12
+print(a + b)    # 333
+print(a - b)    # 309
+print(a * b)    # 3852
+print(a / b)    # 26.75
+</code></pre>
+<p>(2) 在Python中可以使用<code>type()</code>函数对变量的类型进行检查。</p>
+<pre><code class="language-Python">'''
+使用pyte()检查变量类型
+Version: 0.1
+Author:StdChen
+'''
+a = 100
+b = 12.345
+c = 1 + 3j
+d = 'Hello, world！'
+e = True
+print(type(a))    # &lt;class 'int'&gt;
+print(type(b))    # &lt;class 'float'&gt;
+print(type(c))    # &lt;class 'complex'&gt;
+print(type(d))    # &lt;class 'str'&gt;
+print(type(e))    # &lt;class 'bool'&gt;
+</code></pre>
+<p>(3) 通过键盘输入两个整数来实现对两个整数的算术运算。</p>
+<pre><code class="language-python">&quot;&quot;&quot;
+使用input()函数获取键盘输入(字符串)
+使用int()函数将输入的字符串转换成整数
+使用print()函数输出带占位符的字符串
+Version: 0.1
+Author: StdChen
+&quot;&quot;&quot;
+a = int(input('a = '))
+b = int(input('b = '))
+print('%d + %d = %d' % (a, b, a + b))
+print('%d - %d = %d' % (a, b, a - b))
+print('%d * %d = %d' % (a, b, a * b))
+print('%d / %d = %f' % (a, b, a / b))
+print('%d // %d = %d' % (a, b, a // b))
+print('%d %% %d = %d' % (a, b, a % b))
+print('%d ** %d = %d' % (a, b, a ** b))
+'''
+如果输入a=34,b=21,那么结果分别如下：
+34 + 21 = 55
+34 - 21 = 13
+34 * 21 = 714
+34 / 21 = 1.619047619047619
+34 // 21 = 1
+34 % 21 = 13
+34 ** 21 = 144896287389534090178492559785984
+'''
+</code></pre>
+<blockquote>
+<p>注意：上面的<code>print()</code>函数中输出的字符串使用了占位符语法，其中<code>%d</code>是整数的占位符，<code>%f</code>是小数的占位符，<code>%%</code>表示百分号，字符串之后的<code>%</code>后面跟的变量值会替换掉占位符然后输出到终端。</p>
+</blockquote>
+<h2 id="3-运算符">3 运算符</h2>
+<p>Python支持多种运算符，下表大致按照优先级从高到低的顺序列出了所有的运算符。</p>
+<table>
+<thead>
+<tr>
+<th>运算符</th>
+<th>描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[]</code> <code>[:]</code></td>
+<td>下标，切片</td>
+</tr>
+<tr>
+<td><code>**</code></td>
+<td>指数</td>
+</tr>
+<tr>
+<td><code>~</code> <code>+</code> <code>-</code></td>
+<td>按位取反，正负号</td>
+</tr>
+<tr>
+<td><code>*</code> <code>/</code> <code>%</code> <code>//</code></td>
+<td>乘，除，模，整除</td>
+</tr>
+<tr>
+<td><code>+</code> <code>-</code></td>
+<td>加，减</td>
+</tr>
+<tr>
+<td><code>&gt;&gt;</code> <code>&lt;&lt;</code></td>
+<td>右移，左移</td>
+</tr>
+<tr>
+<td><code>&amp;</code></td>
+<td>按位与</td>
+</tr>
+<tr>
+<td><code>^</code> <code>|</code></td>
+<td>按位异或，按位或</td>
+</tr>
+<tr>
+<td><code>&lt;=</code> <code>&lt;</code> <code>&gt;</code> <code>&gt;=</code></td>
+<td>小于等于，小于，大于，大于等于</td>
+</tr>
+<tr>
+<td><code>==</code> <code>!=</code></td>
+<td>等于，不等于</td>
+</tr>
+<tr>
+<td><code>is</code> <code>is not</code></td>
+<td>身份运算符</td>
+</tr>
+<tr>
+<td><code>in</code> <code>not in</code></td>
+<td>成员运算符</td>
+</tr>
+<tr>
+<td><code>not</code> <code>or</code> <code>and</code></td>
+<td>逻辑运算符</td>
+</tr>
+<tr>
+<td><code>=</code> <code>+=</code> <code>-=</code> <code>*=</code> <code>/=</code> <code>%=</code> <code>//=</code> <code>**=</code> <code>&amp;=</code> <code>| =</code> <code>^=</code> <code>&gt;&gt;=</code> <code>&lt;&lt;=</code></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-python">&quot;&quot;&quot;
+赋值运算符和复合赋值运算符
+Version: 0.1
+Author: StdChen
+&quot;&quot;&quot;
+a = 10
+b = 3
+a += b        # a = a + b
+a *= a + 2    # a = a * (a + 2)
+print(a)      # 195
+</code></pre>
+<h2 id="4-练习">4 练习</h2>
+<pre><code class="language-python"># -*- coding: utf-8 -*-
+&quot;&quot;&quot;
+Created on Mon May 18 10:55:08 2020
+将华氏温度转换为摄氏温度
+@author: StdChen
+&quot;&quot;&quot;
+f = float(input('请输入华氏温度：'))
+c = (f-32)/1.8
+print('%.1f华氏温度 = %.1f摄氏度' % (f,c))
+#在使用print函数输出时，也可以对字符串内容进行格式化处理，上面print函数中的字符串%1.f是一个占位符，稍后会由一个float类型的变量值替换掉它。
+</code></pre>
+<pre><code class="language-python"># -*- coding: utf-8 -*-
+&quot;&quot;&quot;
+Created on Mon May 18 11:04:38 2020
+输入年份，判断是否为闰年,如果是闰年输出True,否则输出False。
+符合下列条件之一者是闰年：
+（1）能被4整除，但不能被100整除；
+（2）能被400整除。
+@author: StdChen
+&quot;&quot;&quot;
+year = int(input('请输入年份：'))
+is_leap = year % 4 == 0 and year % 100 != 0 or year % 400 == 0
+print(is_leap)
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Markdown基本语法学习笔记]]></title>
         <id>https://StdChen.github.io/post/markdown-ji-ben-yu-fa-xue-xi-bi-ji/</id>
@@ -59,9 +259,9 @@
 <li>效果：</li>
 </ul>
 <ul class="contains-task-list">
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-1256867"><label class="task-list-item-label" for="task-item-1256867"> 摄影</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-3524971"><label class="task-list-item-label" for="task-item-3524971"> 看书</label></li>
-<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-2902654"><label class="task-list-item-label" for="task-item-2902654"> 运动</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-7828911"><label class="task-list-item-label" for="task-item-7828911"> 摄影</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" checked="" disabled="" type="checkbox" id="task-item-9398131"><label class="task-list-item-label" for="task-item-9398131"> 看书</label></li>
+<li class="task-list-item"><input class="task-list-item-checkbox" disabled="" type="checkbox" id="task-item-9491145"><label class="task-list-item-label" for="task-item-9491145"> 运动</label></li>
 </ul>
 <h3 id="15-区块">1.5 区块</h3>
 <p>使用<code>&gt;</code><strong>加空格</strong>来表示区块，用于引用别人的文章内容。例如：</p>
@@ -281,6 +481,81 @@ $$
 <p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>α</mi><mi>β</mi><mi>γ</mi><mi mathvariant="normal">Γ</mi><mi>δ</mi><mi mathvariant="normal">Δ</mi><mi>ϵ</mi><mi>ε</mi><mi>ζ</mi><mi>η</mi><mi>θ</mi><mi mathvariant="normal">Θ</mi><mi>ϑ</mi><mi>ι</mi><mi>κ</mi><mi>λ</mi><mi mathvariant="normal">Λ</mi><mi>μ</mi><mi>ν</mi><mi>ξ</mi><mi mathvariant="normal">Ξ</mi><mi>π</mi><mi mathvariant="normal">Π</mi><mi>ϖ</mi><mi>ρ</mi><mi>ϱ</mi><mi>σ</mi><mi mathvariant="normal">Σ</mi><mi>ς</mi><mi>τ</mi><mi>υ</mi><mi mathvariant="normal">Υ</mi><mi>ϕ</mi><mi mathvariant="normal">Φ</mi><mi>φ</mi><mi>χ</mi><mi>ψ</mi><mi mathvariant="normal">Ψ</mi><mi mathvariant="normal">Ω</mi><mi>ω</mi></mrow><annotation encoding="application/x-tex">\alpha \beta \gamma \Gamma \delta \Delta \epsilon \varepsilon \zeta \eta \theta \Theta \vartheta \iota \kappa \lambda \Lambda \mu \nu \xi \Xi \pi \Pi \varpi \rho \varrho \sigma \Sigma \varsigma \tau \upsilon \Upsilon \phi \Phi \varphi \chi \psi \Psi \Omega \omega
 </annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span><span class="mord mathdefault" style="margin-right:0.05278em;">β</span><span class="mord mathdefault" style="margin-right:0.05556em;">γ</span><span class="mord">Γ</span><span class="mord mathdefault" style="margin-right:0.03785em;">δ</span><span class="mord">Δ</span><span class="mord mathdefault">ϵ</span><span class="mord mathdefault">ε</span><span class="mord mathdefault" style="margin-right:0.07378em;">ζ</span><span class="mord mathdefault" style="margin-right:0.03588em;">η</span><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span><span class="mord">Θ</span><span class="mord mathdefault">ϑ</span><span class="mord mathdefault">ι</span><span class="mord mathdefault">κ</span><span class="mord mathdefault">λ</span><span class="mord">Λ</span><span class="mord mathdefault">μ</span><span class="mord mathdefault" style="margin-right:0.06366em;">ν</span><span class="mord mathdefault" style="margin-right:0.04601em;">ξ</span><span class="mord">Ξ</span><span class="mord mathdefault" style="margin-right:0.03588em;">π</span><span class="mord">Π</span><span class="mord mathdefault" style="margin-right:0.02778em;">ϖ</span><span class="mord mathdefault">ρ</span><span class="mord mathdefault">ϱ</span><span class="mord mathdefault" style="margin-right:0.03588em;">σ</span><span class="mord">Σ</span><span class="mord mathdefault" style="margin-right:0.07986em;">ς</span><span class="mord mathdefault" style="margin-right:0.1132em;">τ</span><span class="mord mathdefault" style="margin-right:0.03588em;">υ</span><span class="mord">Υ</span><span class="mord mathdefault">ϕ</span><span class="mord">Φ</span><span class="mord mathdefault">φ</span><span class="mord mathdefault">χ</span><span class="mord mathdefault" style="margin-right:0.03588em;">ψ</span><span class="mord">Ψ</span><span class="mord">Ω</span><span class="mord mathdefault" style="margin-right:0.03588em;">ω</span></span></span></span></span></p>
 <p>注：其余数学公式参考<a href="https://www.latex-project.org/help/documentation/#general-documentation">LaTeX official Core Documentation</a>。</p>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Day1 初识Python]]></title>
+        <id>https://StdChen.github.io/post/chu-shi-python/</id>
+        <link href="https://StdChen.github.io/post/chu-shi-python/">
+        </link>
+        <updated>2020-05-17T12:22:47.000Z</updated>
+        <content type="html"><![CDATA[<h2 id="1-环境搭建">1 环境搭建</h2>
+<p>推荐使用Anaconda与PyCharm作为Python解释器环境和IDE。Anaconda是一个集成包，集成了数据分析等几乎所有的常用安装包，如<code>numpy</code>，<code>scipy</code>，<code>matplotlib</code>等。不建议使用官方原始Python自己一个一个安装所有的包。搭建完成后，以Anconda下的Python作为默认解释器，PyCharm作为开发环境，相当于编辑器。下面介绍windows环境下Python环境的搭建。</p>
+<ul>
+<li>从官网下载<a href="https://www.anaconda.com/">Anaconda</a>与<a href="https://www.jetbrains.com/pycharm/">PyCharm-community</a>，由于Anaconda官网下载较慢，可以直接从<a href="https://mirrors.tuna.tsinghua.edu.cn/help/anaconda/">清华大学镜像站</a>下载。</li>
+<li>安装Anaconda，路径中不能包含空格。</li>
+<li>安装PyCharm，安装选项中选择创建桌面快捷方式即可，其余选项均默认。安装完成后打开进行PyCharm的配置，直接选择下一步。然后选择Creat New Progect，Location选择自己的Python test文件夹（例如，E:\TEST\Python test），对于interperter选项，PyCharm会默认识别计算机已安装的解释器。</li>
+<li>Windows下设置PyCharm在Anaconda的编译环境。打开PyCharm，点击File-&gt;settings-&gt;Project: Python test，选择Project Interpreter，点击右侧设置按钮，选择Add，然后选择Conda Environment，在Exising enviornment中浏览文件，根据Anaconda的安装路径（例如，D:\ProgramData\Anaconda3\Tools\python.exe）找到Python编译环境，选择Apply即可。至此，Python环境搭建完成。</li>
+</ul>
+<h2 id="2-python代码中的注释">2 Python代码中的注释</h2>
+<ul>
+<li>单行注释：以<code>#</code>和空格开头，用于注释单行代码。</li>
+<li>多行注释：以<code>&quot;&quot;&quot;</code>或<code>'''</code>开头，以<code>&quot;&quot;&quot;</code>或<code>'''</code>结尾。</li>
+</ul>
+<pre><code class="language-python">'''
+This is my first python program - Hello, world!
+Version: 0.1
+Author: StdChen
+'''
+print('Hello, wordl!')
+# print(&quot;你好，世界！&quot;)
+</code></pre>
+<h2 id="3-练习">3 练习</h2>
+<p>在Python交互环境中输入代码如下代码，可以看到Tim Peter撰写的<code>The Zen of Python</code>。</p>
+<pre><code class="language-python">import this
+</code></pre>
+<p>运行结果：</p>
+<pre><code>The Zen of Python, by Tim Peters
+
+Beautiful is better than ugly.
+Explicit is better than implicit.
+Simple is better than complex.
+Complex is better than complicated.
+Flat is better than nested.
+Sparse is better than dense.
+Readability counts.
+Special cases aren't special enough to break the rules.
+Although practicality beats purity.
+Errors should never pass silently.
+Unless explicitly silenced.
+In the face of ambiguity, refuse the temptation to guess.
+There should be one-- and preferably only one --obvious way to do it.
+Although that way may not be obvious at first unless you're Dutch.
+Now is better than never.
+Although never is often better than *right* now.
+If the implementation is hard to explain, it's a bad idea.
+If the implementation is easy to explain, it may be a good idea.
+Namespaces are one honking great idea -- let's do more of those!
+</code></pre>
+<p>翻译与解释：</p>
+<pre><code>Python之禅 by Tim Peters
+
+优美胜于丑陋（Python 以编写优美的代码为目标）
+明了胜于晦涩（优美的代码应当是明了的，命名规范，风格相似）
+简洁胜于复杂（优美的代码应当是简洁的，不要有复杂的内部实现）
+复杂胜于凌乱（如果复杂不可避免，那代码间也不能有难懂的关系，要保持接口简洁）
+扁平胜于嵌套（优美的代码应当是扁平的，不能有太多的嵌套）
+间隔胜于紧凑（优美的代码有适当的间隔，不要奢望一行代码解决问题）
+可读性很重要（优美的代码是可读的）
+即便假借特例的实用性之名，也不可违背这些规则（这些规则至高无上）
+不要包容所有错误，除非你确定需要这样做（精准地捕获异常，不写 except:pass 风格的代码）
+当存在多种可能，不要尝试去猜测
+而是尽量找一种，最好是唯一一种明显的解决方案（如果不确定，就用穷举法）
+虽然这并不容易，因为你不是 Python 之父（这里的 Dutch 是指 Guido ）
+做也许好过不做，但不假思索就动手还不如不做（动手之前要细思量）
+如果你无法向人描述你的方案，那肯定不是一个好方案；反之亦然（方案测评标准）
+命名空间是一种绝妙的理念，我们应当多加利用（倡导与号召）
+</code></pre>
 ]]></content>
     </entry>
 </feed>
