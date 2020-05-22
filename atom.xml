@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://StdChen.github.io</id>
     <title>StdChen Website</title>
-    <updated>2020-05-18T15:23:54.550Z</updated>
+    <updated>2020-05-22T12:15:31.137Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://StdChen.github.io"/>
     <link rel="self" href="https://StdChen.github.io/atom.xml"/>
@@ -10,6 +10,13 @@
     <logo>https://StdChen.github.io/images/avatar.png</logo>
     <icon>https://StdChen.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, StdChen Website</rights>
+    <entry>
+        <title type="html"><![CDATA[GO与KEGG富集分析可视化之气泡图绘制]]></title>
+        <id>https://StdChen.github.io/post/go-yu-kegg-fu-ji-fen-xi-ke-shi-hua-zhi-qi-pao-tu-hui-zhi/</id>
+        <link href="https://StdChen.github.io/post/go-yu-kegg-fu-ji-fen-xi-ke-shi-hua-zhi-qi-pao-tu-hui-zhi/">
+        </link>
+        <updated>2020-05-22T12:11:18.000Z</updated>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Day2 语言元素]]></title>
         <id>https://StdChen.github.io/post/Day2 语言元素/</id>

@@ -1,0 +1,265 @@
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>GO与KEGG富集分析可视化之气泡图绘制 | StdChen Website</title>
+<link rel="shortcut icon" href="https://StdChen.github.io/favicon.ico?v=1590149725003">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://StdChen.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="GO与KEGG富集分析可视化之气泡图绘制 | StdChen Website - Atom Feed" href="https://StdChen.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="写在前面
+这是一篇利用ggplot2将DAVID功能富集分析的结果可视化为气泡图的学习笔记。
+1. 数据说明
+从DAVID中导出的功能富集分析数据，主要包括Term、Count、%、pvalue、Genes、Fold Enrichment、..." />
+    <meta name="keywords" content="" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://StdChen.github.io">
+  <img class="avatar" src="https://StdChen.github.io/images/avatar.png?v=1590149725003" alt="">
+  </a>
+  <h1 class="site-title">
+    StdChen Website
+  </h1>
+  <p class="site-description">
+    This is my personal website.
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/post/homepage" class="menu">
+          Home
+        </a>
+      
+    
+      
+        <a href="/post/publications" class="menu">
+          Publications
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          Tags
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          About
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/StdChen" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+        <a href="https://weibo.com/u/3821323866" target="_blank">
+          <i class="ri-weibo-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.zhihu.com/people/chen-56-49-81" target="_blank">
+          <i class="ri-zhihu-line"></i>
+        </a>
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              GO与KEGG富集分析可视化之气泡图绘制
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-05-22
+              </span>
+              <span>
+                3 min read
+              </span>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <h2 id="写在前面">写在前面</h2>
+<p>这是一篇利用<code>ggplot2</code>将<code>DAVID</code>功能富集分析的结果可视化为气泡图的学习笔记。</p>
+<h2 id="1-数据说明">1. 数据说明</h2>
+<p>从DAVID中导出的功能富集分析数据，主要包括Term、Count、%、pvalue、Genes、Fold Enrichment、Benjamini和FDR。气泡图由x轴、y轴、气泡的大小和气泡的颜色组成，其中x轴通常为<code>Gene Ratio</code>或<code>Rich Factor</code>，y轴为<code>Term</code>，气泡的大小用<code>Count</code>表示，气泡的颜色用<code>p-value</code>、<code>q-value</code>、<code>adjusted p-value</code>等表示。</p>
+<ul>
+<li>
+<p>DAVID结果中的<code>%</code>表示<code>involved genes/total genes</code>，即<code>Gene Ratio</code>。</p>
+</li>
+<li>
+<p>DAVID结果中的<code>Fold Enrichment</code>表示<code>Rich Factor</code>。</p>
+<blockquote>
+<p><a href="https://baijiahao.baidu.com/s?id=1639929212722527503&amp;wfr=spider&amp;for=pc">听说富集分析有个概念叫Fold Enrichment</a></p>
+<p>Fold Enrichment = (k/n)/(M/N)，Rich Factor = k/M，而n与N为恒量，即Fold Enrichment = Rich Factor*C，C=N/n为常数。故Flold Enrichment与Rich Factor是同一个东西。</p>
+</blockquote>
+</li>
+<li>
+<p>在统计学中，FDR（False Discovery Rate）表示在所有R次拒绝零假设中错误发现的期望比例。FDR校正后的p-value值，即q-value。因此一般可认为FDR = q-value = adjusted p-value。</p>
+<blockquote>
+<p>在所有从p-value估算q-value的方法中，Benjamini &amp; Hochberg法（BH法）应用最广泛。BH法关于q-value的计算公式为：</p>
+<p>q-value = p-value*(m/k)</p>
+<p>其中，m为检验的次数，k为本次检验的p-value在所有检验中的秩。</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="2-代码">2. 代码</h2>
+<pre><code class="language-R">library(ggplot2)
+pathway = read.table(&quot;C://Users/Administrator/Desktop/Data.csv&quot;,header=T,sep=&quot;,&quot;)
+p = ggplot(pathway,aes(RichFactor,Pathway)) #Pathwy即Term。
+p = p + geom_point()
+p= p + geom_point(aes(size=GeneCounts)) # 用GeneCounts表示气泡的大小
+pbubble = p + geom_point(aes(size=GeneCounts,color=-1*log10(pvalue)))
+pbubble = pbubble + scale_colour_gradient(low=&quot;green&quot;,high=&quot;red&quot;)# 自定义渐变颜色
+# 绘制pathway富集散点图
+pr = pbubble + scale_colour_gradient(low=&quot;green&quot;,high=&quot;red&quot;) + labs(color=expression(-log[10](pvalue)),size=&quot;Gene counts&quot;,x=&quot;RichFactor&quot;,title=&quot;KEGG Pathway&quot;)
+pr = pr + theme_bw() # 改变图片的样式（主题）
+ggsave(&quot;C://Users/Administrator/Desktop/KEGG Pathway.pdf&quot;,height=4) # 保存为.pdf格式
+ggsave(&quot;C://Users/Administrator/Desktop/KEGG Pathway.jpg&quot;,height=4) # 保存为.jpg格式
+ggsave(&quot;C://Users/Administrator/Desktop/KEGG Pathway.eps&quot;,height=4) # 保存为.eps格式
+#可用ggsave(&quot;C://Users/Administrator/Desktop/KEGG Pathway.jpg&quot;,width=4,height=4)设定画布的大小
+</code></pre>
+<p><strong>【Tips】</strong></p>
+<ul>
+<li>关于<code>read.table()</code>函数，数据文件为.csv格式，故其参数为<code>sep=&quot;,&quot;</code>而非<code>sep=&quot;\t&quot;</code>。<code>sep=&quot;\t&quot;</code>用于<code>.tsv</code>格式的数据。</li>
+<li>如果Term较短，则气泡图整体较宽，可在原始数据中的Term前加空格。<s>（按道理可以用代码实现这一操作，待后续学习）</s></li>
+</ul>
+<h3 id="3-结果">3. 结果</h3>
+<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2020/05/22/Zqp1Ub5kE98rtMG.jpg" alt="KEGG Pathway" loading="lazy"></figure>
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2">写在前面</a></li>
+<li><a href="#1-%E6%95%B0%E6%8D%AE%E8%AF%B4%E6%98%8E">1. 数据说明</a></li>
+<li><a href="#2-%E4%BB%A3%E7%A0%81">2. 代码</a>
+<ul>
+<li><a href="#3-%E7%BB%93%E6%9E%9C">3. 结果</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
+        </div>
+
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://StdChen.github.io/post/Day2 语言元素/">
+              <h3 class="post-title">
+                Day2 语言元素
+              </h3>
+            </a>
+          </div>
+        
+
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '544154f7e731791ebda6',
+    clientSecret: '3709408718fa27ce5f3d5fe0f2fca57ccf4d107a',
+    repo: 'StdChen.github.io',
+    owner: 'StdChen',
+    admin: ['StdChen'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+          
+
+          
+        
+
+        <div class="site-footer">
+  ©2020 by StdChen
+  <a class="rss" href="https://StdChen.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
+    <script>
+      hljs.initHighlightingOnLoad()
+
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
+
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>
